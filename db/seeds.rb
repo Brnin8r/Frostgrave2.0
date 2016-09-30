@@ -39,10 +39,21 @@ School.create([
   }
 ])
 
+chronomancyAligned = [School.find_by_name("Elementalism").id,
+                      School.find_by_name("Necromancy").id,
+                      School.find_by_name("Soothsaying").id
+                     ]
+
+chronomancyAligned.each do |alignment|
+  Aligned.create({:school_id => School.find_by_name("Chronomancy").id,
+                  :aligned_school_id => alignment
+                })
+end
+
 Aligned.create([
   {
-    :school_id => 1,
-    :aligned_school_id => [2, 5, 7] 
+    :school_id => School.find_by_name("Chronomancy").id,
+    :aligned_school_id => [2, 5, 7]
   },
   {
     :school_id => 2,
